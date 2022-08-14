@@ -1,4 +1,4 @@
-package priority_queue
+package pq
 
 //-------Blocked priority queue
 
