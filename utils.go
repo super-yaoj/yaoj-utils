@@ -406,3 +406,18 @@ func ResortEntry[T any](a []T, f func(int, int) bool, id int) {
 		a[id + 1] = t
 	}
 }
+
+/*
+every entry of val has an id, we will arrange val such that the result matches the given id array
+*/
+func ArrangeById[T any](id []int, val []T, getId func(*T)int) []T {
+	ret := make([]T, len(id))
+	mp := make(map[int]int)
+	for i := range val {
+		mp[getId(&val[i])] = i
+	}
+	for i := range id {
+		ret[i] = val[mp[id[i]]]
+	}
+	return ret
+}
