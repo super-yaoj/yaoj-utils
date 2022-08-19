@@ -298,15 +298,8 @@ func If[T any](a bool, b T, c T) T {
 	return c
 }
 
-func GetTempDir() string {
-	for {
-		tmp := os.TempDir() + RandomString(16)
-		_, err := os.Stat(tmp)
-		if err != nil {
-			os.MkdirAll(tmp, os.ModePerm)
-			return tmp
-		}
-	}
+func GetTempDir() (string, error) {
+	return os.MkdirTemp(os.TempDir(), "")
 }
 
 func UnzipMemory(mem []byte) (map[string][]byte, error) {
