@@ -199,6 +199,7 @@ const (
 	Cplain CtntType = iota
 	Cbinary
 	Csource
+  Ccompconf
 )
 
 func init() {
